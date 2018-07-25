@@ -36,9 +36,10 @@ void Wander_State::update(GameObject * gameObject, StateMachine * sm, float delt
 	float mag = dist.magnitude();
 	if (mag < 100.0f)
 		sm->ChangeState(gameObject, new Pursue_State(m_target));
+
 }
 
-void Wander_State::init(GameObject * gameObject)
+void Wander_State::initiate(GameObject * gameObject)
 {
 }
 

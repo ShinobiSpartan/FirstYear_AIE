@@ -2,7 +2,6 @@
 
 #include "State.h"
 
-
 class Pursue_State : public State
 {
 public:

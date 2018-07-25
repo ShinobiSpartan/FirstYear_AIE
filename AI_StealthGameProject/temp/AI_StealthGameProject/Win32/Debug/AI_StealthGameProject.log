@@ -1,3 +1,5 @@
-﻿  Pursue_State.cpp
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  AI_StealthGameProject.vcxproj -> C:\Users\s173004\Desktop\AI_StealthGameProject\temp\AI_StealthGameProject\Win32\Debug\AI_StealthGameProject.exe
+﻿  AI_StealthGameProjectApp.cpp
+c:\users\s173004\desktop\github folder\firstyear_aie\trunk\ai_stealthgameproject\ai_stealthgameproject\ai_stealthgameprojectapp.cpp(39): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
+  AI_StealthGameProject.vcxproj -> C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\AI_StealthGameProject\temp\AI_StealthGameProject\Win32\Debug\AI_StealthGameProject.exe

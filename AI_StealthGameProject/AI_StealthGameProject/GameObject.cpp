@@ -37,6 +37,7 @@ void GameObject::update(float deltaTime)
 void GameObject::draw(aie::Renderer2D * renderer)
 {
 	renderer->drawSprite(texture, position.m_x, position.m_y);
+	//renderer->drawCircle(position.m_x, position.m_y, 250.0f);
 }
 
 void GameObject::AddForce(Vector2 force)

@@ -26,17 +26,21 @@ bool AI_StealthGameProjectApp::startup() {
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
 	GameObject* m_player = new GameObject(new aie::Texture("../bin/textures/Player_Knife.png"), Vector2(10, 20));
-	GameObject* m_ai = new GameObject(new aie::Texture("../bin/textures/Enemy_Sprite.png"), Vector2(400, 400));
-
-	m_ai->AddForce(Vector2(100, 200));
-
+	
 	m_gameObjects.push_back(m_player);
-	m_gameObjects.push_back(m_ai);
-
 	m_player->AddBehaviour(new KeyboardController(aie::Input::getInstance()));
 
-	m_finiteStateMachine.ChangeState(m_ai, new Wander_State(m_player, 0.0f, 10.0f, 2.0f));
-	m_ai->AddBehaviour(&m_finiteStateMachine);
+
+	for (int i = 0; i < 4; i++)
+	{
+		GameObject* newEnemy = new GameObject(new aie::Texture("../bin/textures/Enemy_Sprite.png"), (Vector2(getWindowWidth() / 2, getWindowHeight() / 2)));
+		m_gameObjects.push_back(newEnemy);
+		m_finiteStateMachine = new StateMachine();
+		m_finiteStateMachine->ChangeState(newEnemy, new Wander_State(m_player, 0.0f, 5.0f, 2.0f));
+		newEnemy->AddBehaviour(m_finiteStateMachine);
+	}
+
+	//m_gameObjects[0]->AddBehaviour()
 
 	return true;
 }

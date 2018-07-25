@@ -1,5 +1,6 @@
 #include "Pursue_State.h"
 #include "StateMachine.h"
+#include "Wander_State.h"
 
 
 Pursue_State::Pursue_State()
@@ -20,6 +21,11 @@ void Pursue_State::update(GameObject * gameObject, StateMachine * sm, float delt
 	desiredVel = desiredVel * 100;
 	Vector2 force = desiredVel - gameObject->GetVelocity();
 	gameObject->AddForce(force);
+
+	Vector2 dist = target->GetPosition() - gameObject->GetPosition();
+	float magFromTarget = dist.magnitude();
+	if (magFromTarget > 250.0f)
+		sm->ChangeState(gameObject, new Wander_State(target, 0.0f, 5.0f, 2.0f));
 }
 
 void Pursue_State::initiate(GameObject * gameObject)

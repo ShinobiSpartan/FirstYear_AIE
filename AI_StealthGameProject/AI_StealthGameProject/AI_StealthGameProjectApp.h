@@ -21,7 +21,7 @@ protected:
 
 	aie::Renderer2D*			m_2dRenderer;
 	aie::Font*					m_font;
-	StateMachine				m_finiteStateMachine;
+	StateMachine*				m_finiteStateMachine;
 	std::vector<GameObject*>	m_gameObjects;
 
 };
