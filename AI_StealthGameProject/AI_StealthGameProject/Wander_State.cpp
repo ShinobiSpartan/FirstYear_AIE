@@ -1,7 +1,5 @@
 #include "Wander_State.h"
 #include <glm\ext.hpp>
-#include <random>
-#include <time.h>
 #include "StateMachine.h"
 #include "Pursue_State.h"
 

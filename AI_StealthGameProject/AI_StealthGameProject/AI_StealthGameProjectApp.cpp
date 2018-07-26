@@ -5,7 +5,6 @@
 #include "GameObject.h"
 #include "KeyboardController.h"
 #include "StateMachine.h"
-#include "Seek_State.h"
 #include "Pursue_State.h"
 #include "Wander_State.h"
 
@@ -31,16 +30,14 @@ bool AI_StealthGameProjectApp::startup() {
 	m_player->AddBehaviour(new KeyboardController(aie::Input::getInstance()));
 
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 45; i++)
 	{
-		GameObject* newEnemy = new GameObject(new aie::Texture("../bin/textures/Enemy_Sprite.png"), (Vector2(getWindowWidth() / 2, getWindowHeight() / 2)));
-		m_gameObjects.push_back(newEnemy);
+		GameObject* newDumbEnemy = new GameObject(new aie::Texture("../bin/textures/Enemy_Sprite.png"), (Vector2(1300, 360)));
+		m_gameObjects.push_back(newDumbEnemy);
 		m_finiteStateMachine = new StateMachine();
-		m_finiteStateMachine->ChangeState(newEnemy, new Wander_State(m_player, 0.0f, 5.0f, 2.0f));
-		newEnemy->AddBehaviour(m_finiteStateMachine);
+		m_finiteStateMachine->ChangeState(newDumbEnemy, new Wander_State(m_player, -5.0f, 20.0f, 1.0f));
+		newDumbEnemy->AddBehaviour(m_finiteStateMachine);
 	}
-
-	//m_gameObjects[0]->AddBehaviour()
 
 	return true;
 }
@@ -57,6 +54,8 @@ void AI_StealthGameProjectApp::update(float deltaTime) {
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
+
+	srand(time(nullptr));
 
 	for (auto gameObjects : m_gameObjects)
 		gameObjects->update(deltaTime);

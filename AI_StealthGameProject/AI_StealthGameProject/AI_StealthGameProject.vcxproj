@@ -164,6 +164,9 @@
   <ItemGroup>
     <ClCompile Include="AI_StealthGameProjectApp.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="GraphEdge.cpp" />
+    <ClCompile Include="GraphNode.cpp" />
     <ClCompile Include="KeyboardController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pursue_State.cpp" />
@@ -174,6 +177,9 @@
   <ItemGroup>
     <ClInclude Include="AI_StealthGameProjectApp.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="GraphEdge.h" />
+    <ClInclude Include="GraphNode.h" />
     <ClInclude Include="IBehaviour.h" />
     <ClInclude Include="KeyboardController.h" />
     <ClInclude Include="Pursue_State.h" />

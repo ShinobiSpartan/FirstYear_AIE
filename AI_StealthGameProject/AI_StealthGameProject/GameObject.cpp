@@ -19,14 +19,11 @@ GameObject::GameObject(aie::Texture * texture, Vector2 position)
 	velocity = Vector2(0, 0);
 }
 
-
-GameObject::~GameObject()
-{
-	delete texture;
-}
-
 void GameObject::update(float deltaTime)
 {
+	if (position.m_x < 0 || position.m_x > 1400 || position.m_y < 0 || position.m_y > 720)
+		position = { 1300, 360 };
+
 	AddForce(velocity * -0.15f);
 	velocity = velocity + acceleration * deltaTime;
 	position = position + velocity * deltaTime;
@@ -63,4 +60,9 @@ void GameObject::SetPosition(Vector2 pos)
 Vector2 GameObject::GetPosition()
 {
 	return position;
+}
+
+GameObject::~GameObject()
+{
+	delete texture;
 }

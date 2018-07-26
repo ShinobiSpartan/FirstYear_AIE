@@ -16,7 +16,6 @@ class GameObject
 public:
 	GameObject();
 	GameObject(aie::Texture* texture, Vector2 position);
-	~GameObject();
 
 	// Update and Draw functions
 	void update(float deltaTime);
@@ -35,11 +34,14 @@ public:
 	void SetPosition(Vector2 pos);
 	Vector2 GetPosition();
 
-	Vector2 position;
+	~GameObject();
+
+	
+	Vector2			position;
 
 protected:
-	aie::Texture* texture;
-	IBehaviour* m_behaviours;
-	Vector2 acceleration;
-	Vector2 velocity;
+	aie::Texture*	texture;
+	IBehaviour*		m_behaviours;
+	Vector2			acceleration;
+	Vector2			velocity;
 };

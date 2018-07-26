@@ -8,13 +8,6 @@ StateMachine::StateMachine()
 	prevState = nullptr;
 }
 
-
-StateMachine::~StateMachine()
-{
-	delete currentState;
-	delete prevState;
-}
-
 void StateMachine::update(GameObject * gameObject, float deltaTime)
 {
 	// Calls the update function of the current state
@@ -47,4 +40,10 @@ State * StateMachine::GetCurrentState()
 State * StateMachine::GetPrevState()
 {
 	return prevState;
+}
+
+StateMachine::~StateMachine()
+{
+	delete currentState;
+	delete prevState;
 }
