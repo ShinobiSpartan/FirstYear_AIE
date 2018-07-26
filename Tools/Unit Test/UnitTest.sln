@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "UnitTest\UnitTest.vcxproj", "{02425FB5-E15F-4B7D-84FC-DA0B04920551}"
+	ProjectSection(ProjectDependencies) = postProject
+		{85155037-AAFA-4370-861E-50966368E9F1} = {85155037-AAFA-4370-861E-50966368E9F1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFG_MathLib", "MFG_MathLib\MFG_MathLib.vcxproj", "{85155037-AAFA-4370-861E-50966368E9F1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MatrixHierarchy_Program", "MatrixHierarchy_Program\MatrixHierarchy_Program.vcxproj", "{DEA49362-B428-4215-8D64-4EA0B4FF0858}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AF59BB0B-E059-4773-83DC-728A949647DA} = {AF59BB0B-E059-4773-83DC-728A949647DA}
+		{85155037-AAFA-4370-861E-50966368E9F1} = {85155037-AAFA-4370-861E-50966368E9F1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bootstrap", "bootstrap\Bootstrap.vcxproj", "{AF59BB0B-E059-4773-83DC-728A949647DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02425FB5-E15F-4B7D-84FC-DA0B04920551}.Debug|x64.ActiveCfg = Debug|x64
+		{02425FB5-E15F-4B7D-84FC-DA0B04920551}.Debug|x64.Build.0 = Debug|x64
+		{02425FB5-E15F-4B7D-84FC-DA0B04920551}.Debug|x86.ActiveCfg = Debug|Win32
+		{02425FB5-E15F-4B7D-84FC-DA0B04920551}.Debug|x86.Build.0 = Debug|Win32
+		{02425FB5-E15F-4B7D-84FC-DA0B04920551}.Release|x64.ActiveCfg = Release|x64
+		{02425FB5-E15F-4B7D-84FC-DA0B04920551}.Release|x64.Build.0 = Release|x64
+		{02425FB5-E15F-4B7D-84FC-DA0B04920551}.Release|x86.ActiveCfg = Release|Win32
+		{02425FB5-E15F-4B7D-84FC-DA0B04920551}.Release|x86.Build.0 = Release|Win32
+		{85155037-AAFA-4370-861E-50966368E9F1}.Debug|x64.ActiveCfg = Debug|x64
+		{85155037-AAFA-4370-861E-50966368E9F1}.Debug|x64.Build.0 = Debug|x64
+		{85155037-AAFA-4370-861E-50966368E9F1}.Debug|x86.ActiveCfg = Debug|Win32
+		{85155037-AAFA-4370-861E-50966368E9F1}.Debug|x86.Build.0 = Debug|Win32
+		{85155037-AAFA-4370-861E-50966368E9F1}.Release|x64.ActiveCfg = Release|x64
+		{85155037-AAFA-4370-861E-50966368E9F1}.Release|x64.Build.0 = Release|x64
+		{85155037-AAFA-4370-861E-50966368E9F1}.Release|x86.ActiveCfg = Release|Win32
+		{85155037-AAFA-4370-861E-50966368E9F1}.Release|x86.Build.0 = Release|Win32
+		{DEA49362-B428-4215-8D64-4EA0B4FF0858}.Debug|x64.ActiveCfg = Debug|x64
+		{DEA49362-B428-4215-8D64-4EA0B4FF0858}.Debug|x64.Build.0 = Debug|x64
+		{DEA49362-B428-4215-8D64-4EA0B4FF0858}.Debug|x86.ActiveCfg = Debug|Win32
+		{DEA49362-B428-4215-8D64-4EA0B4FF0858}.Debug|x86.Build.0 = Debug|Win32
+		{DEA49362-B428-4215-8D64-4EA0B4FF0858}.Release|x64.ActiveCfg = Release|x64
+		{DEA49362-B428-4215-8D64-4EA0B4FF0858}.Release|x64.Build.0 = Release|x64
+		{DEA49362-B428-4215-8D64-4EA0B4FF0858}.Release|x86.ActiveCfg = Release|Win32
+		{DEA49362-B428-4215-8D64-4EA0B4FF0858}.Release|x86.Build.0 = Release|Win32
+		{AF59BB0B-E059-4773-83DC-728A949647DA}.Debug|x64.ActiveCfg = Debug|x64
+		{AF59BB0B-E059-4773-83DC-728A949647DA}.Debug|x64.Build.0 = Debug|x64
+		{AF59BB0B-E059-4773-83DC-728A949647DA}.Debug|x86.ActiveCfg = Debug|Win32
+		{AF59BB0B-E059-4773-83DC-728A949647DA}.Debug|x86.Build.0 = Debug|Win32
+		{AF59BB0B-E059-4773-83DC-728A949647DA}.Release|x64.ActiveCfg = Release|x64
+		{AF59BB0B-E059-4773-83DC-728A949647DA}.Release|x64.Build.0 = Release|x64
+		{AF59BB0B-E059-4773-83DC-728A949647DA}.Release|x86.ActiveCfg = Release|Win32
+		{AF59BB0B-E059-4773-83DC-728A949647DA}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F64A3B6-4F38-46F0-A13B-70CD0B5760E9}
+	EndGlobalSection
+EndGlobal
