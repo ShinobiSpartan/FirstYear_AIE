@@ -23,7 +23,7 @@ public:
 	std::vector<GraphNode*> GetNodes();
 
 	// Djisktra shortest path search
-	std::vector<GraphNode*> DjisktraSearch(GraphNode* startNode, GraphNode* endNode);
+	std::vector<GraphNode*> aStarSearch(GraphNode* startNode, GraphNode* endNode);
 
 	~Graph();
 

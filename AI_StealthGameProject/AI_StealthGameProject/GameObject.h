@@ -9,13 +9,19 @@ namespace aie
 	class Texture;
 }
 
+enum Race
+{
+	Player,
+	Alien
+};
+
 class IBehaviour;
 
 class GameObject
 {
 public:
 	GameObject();
-	GameObject(aie::Texture* texture, Vector2 position);
+	GameObject(aie::Texture* texture, Vector2 position, Race objectRace);
 
 	// Update and Draw functions
 	void update(float deltaTime);
@@ -44,4 +50,5 @@ protected:
 	IBehaviour*		m_behaviours;
 	Vector2			acceleration;
 	Vector2			velocity;
+	Race			m_race;
 };

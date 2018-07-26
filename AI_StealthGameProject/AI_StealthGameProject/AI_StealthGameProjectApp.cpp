@@ -24,15 +24,15 @@ bool AI_StealthGameProjectApp::startup() {
 	// the following path would be used instead: "./font/consolas.ttf"
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
-	GameObject* m_player = new GameObject(new aie::Texture("../bin/textures/Player_Knife.png"), Vector2(10, 20));
+	GameObject* m_player = new GameObject(new aie::Texture("../bin/textures/Player_Knife.png"), Vector2(100, 360), Player);
 	
 	m_gameObjects.push_back(m_player);
 	m_player->AddBehaviour(new KeyboardController(aie::Input::getInstance()));
 
 
-	for (int i = 0; i < 45; i++)
+	for (int i = 0; i < 40; i++)
 	{
-		GameObject* newDumbEnemy = new GameObject(new aie::Texture("../bin/textures/Enemy_Sprite.png"), (Vector2(1300, 360)));
+		GameObject* newDumbEnemy = new GameObject(new aie::Texture("../bin/textures/Enemy_Sprite.png"), Vector2(1300, 360), Alien);
 		m_gameObjects.push_back(newDumbEnemy);
 		m_finiteStateMachine = new StateMachine();
 		m_finiteStateMachine->ChangeState(newDumbEnemy, new Wander_State(m_player, -5.0f, 20.0f, 1.0f));

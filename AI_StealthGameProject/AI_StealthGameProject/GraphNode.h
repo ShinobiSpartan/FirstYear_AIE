@@ -38,6 +38,8 @@ private:
 	bool					m_isVisited;
 	GraphNode*				m_parent;
 	float					m_gScore;
+	float					m_hScore;
+	float					m_fScore;
 	std::vector<GraphEdge*>	m_connections;
 };
 

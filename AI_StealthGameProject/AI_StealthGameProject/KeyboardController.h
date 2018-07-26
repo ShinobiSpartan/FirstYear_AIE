@@ -18,5 +18,6 @@ public:
 
 private:
 	aie::Input* input;
+	const float speed = 5500.0f;
 };
 

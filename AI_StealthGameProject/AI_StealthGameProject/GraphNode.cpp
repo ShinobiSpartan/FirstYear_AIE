@@ -1,5 +1,5 @@
 #include "GraphNode.h"
-
+#include "GraphEdge.h"
 
 
 GraphNode::GraphNode()
@@ -28,11 +28,16 @@ bool GraphNode::GetVisted()
 
 void GraphNode::AddConnections(GraphNode * node, GraphNode * target, float cost)
 {
+	GraphEdge* newEdge = new GraphEdge();
+	newEdge->SetNode(target);
+	newEdge->SetCost(cost);
+	m_connections.push_back(newEdge);
+
 }
 
 std::vector<GraphEdge*> GraphNode::GetConnections()
 {
-	return std::vector<GraphEdge*>();
+	return m_connections;
 }
 
 void GraphNode::SetParent(GraphNode * node)
@@ -57,7 +62,7 @@ float GraphNode::GetGScore()
 
 bool GraphNode::CompareGScore(GraphNode * a, GraphNode * b)
 {
-	if (a < b)
+	if (a->GetGScore() < b->GetGScore())
 		return false;
 	else
 		return true;

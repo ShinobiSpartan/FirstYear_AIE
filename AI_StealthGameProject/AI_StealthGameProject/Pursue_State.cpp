@@ -24,7 +24,7 @@ void Pursue_State::update(GameObject * gameObject, StateMachine * sm, float delt
 
 	Vector2 dist = target->GetPosition() - gameObject->GetPosition();
 	float magFromTarget = dist.magnitude();
-	if (magFromTarget > 250.0f)
+	if (magFromTarget > 100.0f)
 		sm->ChangeState(gameObject, new Wander_State(target, 0.0f, 15.0f, 10.0f));
 }
 

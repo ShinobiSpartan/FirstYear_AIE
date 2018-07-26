@@ -11,24 +11,39 @@ GameObject::GameObject()
 	velocity = Vector2(0, 0);
 }
 
-GameObject::GameObject(aie::Texture * texture, Vector2 position)
+GameObject::GameObject(aie::Texture * texture, Vector2 position, Race objectRace)
 {
 	this->texture = texture;
 	this->position = position;
 	acceleration = Vector2(0, 0);
 	velocity = Vector2(0, 0);
+	m_race = objectRace;
 }
 
 void GameObject::update(float deltaTime)
 {
-	if (position.m_x < 0 || position.m_x > 1400 || position.m_y < 0 || position.m_y > 720)
-		position = { 1300, 360 };
+	if (m_race == Alien)
+	{
+		if (position.m_x < 0 || position.m_x > 1400 || position.m_y < 0 || position.m_y > 720)
+			position = { 1300, 360 };
 
-	AddForce(velocity * -0.15f);
-	velocity = velocity + acceleration * deltaTime;
-	position = position + velocity * deltaTime;
-	acceleration = Vector2(0, 0);
-	m_behaviours->update(this, deltaTime);
+		AddForce(velocity * -0.15f);
+		velocity = velocity + acceleration * deltaTime;
+		position = position + velocity * deltaTime;
+		acceleration = Vector2(0, 0);
+		m_behaviours->update(this, deltaTime);
+	}
+	else if (m_race == Player)
+	{
+		if (position.m_x < 0 || position.m_x > 1400 || position.m_y < 0 || position.m_y > 720)
+			position = { 100, 360 };
+
+		AddForce(velocity * -50.0f);
+		velocity = velocity + acceleration * deltaTime;
+		position = position + velocity * deltaTime;
+		acceleration = Vector2(0, 0);
+		m_behaviours->update(this, deltaTime);
+	}
 }
 
 void GameObject::draw(aie::Renderer2D * renderer)
