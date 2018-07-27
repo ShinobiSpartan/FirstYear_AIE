@@ -169,6 +169,7 @@
     <ClCompile Include="GraphNode.cpp" />
     <ClCompile Include="KeyboardController.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PathFind_State.cpp" />
     <ClCompile Include="Pursue_State.cpp" />
     <ClCompile Include="Seek_State.cpp" />
     <ClCompile Include="StateMachine.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="GraphNode.h" />
     <ClInclude Include="IBehaviour.h" />
     <ClInclude Include="KeyboardController.h" />
+    <ClInclude Include="PathFind_State.h" />
     <ClInclude Include="Pursue_State.h" />
     <ClInclude Include="Seek_State.h" />
     <ClInclude Include="State.h" />

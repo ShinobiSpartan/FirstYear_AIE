@@ -4,6 +4,9 @@
 
 GraphNode::GraphNode()
 {
+	m_parent = nullptr;
+	m_isVisited = false;
+	m_position = Vector2(0, 0);
 }
 
 void GraphNode::SetPosition(Vector2 position)
@@ -29,7 +32,7 @@ bool GraphNode::GetVisted()
 void GraphNode::AddConnections(GraphNode * node, GraphNode * target, float cost)
 {
 	GraphEdge* newEdge = new GraphEdge();
-	newEdge->SetNode(target);
+	newEdge->SetTargetNode(target);
 	newEdge->SetCost(cost);
 	m_connections.push_back(newEdge);
 
@@ -60,15 +63,37 @@ float GraphNode::GetGScore()
 	return m_gScore;
 }
 
+void GraphNode::SetFScore(float fScore)
+{
+	m_fScore = fScore;
+}
+
+float GraphNode::GetFScore()
+{
+	return m_fScore;
+}
+
 bool GraphNode::CompareGScore(GraphNode * a, GraphNode * b)
 {
-	if (a->GetGScore() < b->GetGScore())
-		return false;
-	else
+	if (a->GetGScore() > b->GetGScore())
 		return true;
+	else
+		return false;
+}
+
+bool GraphNode::CompareFScore(GraphNode * a, GraphNode * b)
+{
+	if (a->GetFScore() > b->GetFScore())
+		return true;
+	else
+		return false;
 }
 
 
 GraphNode::~GraphNode()
 {
+	for (auto& edge : m_connections)
+		delete edge;
+
+	//delete m_parent;
 }

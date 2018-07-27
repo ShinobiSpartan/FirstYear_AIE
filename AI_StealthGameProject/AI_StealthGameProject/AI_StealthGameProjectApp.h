@@ -5,6 +5,9 @@
 #include <vector>
 #include "StateMachine.h"
 
+class GameObject;
+class Graph;
+
 class AI_StealthGameProjectApp : public aie::Application {
 public:
 
@@ -17,11 +20,15 @@ public:
 	virtual void update(float deltaTime);
 	virtual void draw();
 
+	void CreateGraph();
+
 protected:
 
 	aie::Renderer2D*			m_2dRenderer;
 	aie::Font*					m_font;
 	StateMachine*				m_finiteStateMachine;
 	std::vector<GameObject*>	m_gameObjects;
+	Graph*						m_graph;
+	Application*				m_Application;
 
 };

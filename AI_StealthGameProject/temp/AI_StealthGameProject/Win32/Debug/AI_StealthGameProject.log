@@ -1,3 +1,2 @@
-﻿  AI_StealthGameProjectApp.cpp
-c:\users\s173004\desktop\github folder\firstyear_aie\trunk\ai_stealthgameproject\ai_stealthgameproject\ai_stealthgameprojectapp.cpp(58): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  Graph.cpp
   AI_StealthGameProject.vcxproj -> C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\AI_StealthGameProject\temp\AI_StealthGameProject\Win32\Debug\AI_StealthGameProject.exe

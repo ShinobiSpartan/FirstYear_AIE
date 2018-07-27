@@ -1,5 +1,7 @@
 #include "Graph.h"
-
+#include <Renderer2D.h>
+#include <list>
+#include <math.h>
 
 
 Graph::Graph()
@@ -16,17 +18,86 @@ void Graph::ConnectNode(GraphNode * a, GraphNode * b, float cost)
 	a->AddConnections(a, b, cost);
 }
 
+void Graph::draw(aie::Renderer2D * renderer)
+{
+	for (auto node : m_nodes)
+	{
+		renderer->setRenderColour(0.6f, 0.6f, 0.6f, 0.5f);
+		for (auto connect : node->GetConnections())
+		{
+			GraphEdge* edge = connect;
+			renderer->setRenderColour(0.6f, 0.6f, 0.6f, 0.6f);		
+			renderer->drawLine(node->GetPosition().m_x, node->GetPosition().m_y, edge->GetTargetNode()->GetPosition().m_x, edge->GetTargetNode()->GetPosition().m_y, 1.0f, 1.5f);
+		}
+		if (node->isHighlighted == true)
+			renderer->setRenderColour(1, 0, 0, 1);
+		
+		renderer->drawBox(node->GetPosition().m_x, node->GetPosition().m_y, 10, 10, 0, 1);
+	}
+}
+
 std::vector<GraphNode*> Graph::GetNodes()
 {
-	return std::vector<GraphNode*>();
+	return m_nodes;
 }
 
 
 std::vector<GraphNode*> Graph::aStarSearch(GraphNode * startNode, GraphNode * endNode)
 {
-	
+	for (auto n : m_nodes)
+	{
+		n->SetParent(nullptr);
+		n->SetGScore(NULL);
+		n->SetFScore(INFINITY);
+	}
+
+	std::list<GraphNode*> priorityQ;
+
+	startNode->SetParent(nullptr);
+	startNode->SetGScore(0);
+	priorityQ.push_back(startNode);
+
+	while (priorityQ.size() != 0)
+	{
+		priorityQ.sort(GraphNode::CompareFScore);
+		GraphNode* currentNode = priorityQ.back();
+		priorityQ.remove(currentNode);
+		currentNode->SetVisited(true);
+
+		for (auto e : currentNode->GetConnections())
+		{
+			if (!e->GetTargetNode()->GetVisted())
+			{
+				Vector2 dist = e->GetTargetNode()->GetPosition() - endNode->GetPosition();
+				float hScore = sqrtf(dist.m_x * dist.m_x + dist.m_y * dist.m_y);
+				float cost = currentNode->GetGScore() + e->GetCost() + hScore;
+
+				if (cost < e->GetTargetNode()->GetFScore())
+				{
+					e->GetTargetNode()->SetParent(currentNode);
+					e->GetTargetNode()->SetFScore(cost);
+					priorityQ.push_back(e->GetTargetNode());
+				}
+			}
+		}
+	}
+
+	std::vector<GraphNode*> enemyPath;
+	GraphNode* currentPathNode = endNode;
+	while (currentPathNode != nullptr)
+	{
+		enemyPath.push_back(currentPathNode);
+		currentPathNode = currentPathNode->GetParent();
+	}
+	return enemyPath;
+
 }
 
 Graph::~Graph()
 {
+	for (auto& node : m_nodes)
+	{
+		delete node;
+		node = nullptr;
+	}
 }

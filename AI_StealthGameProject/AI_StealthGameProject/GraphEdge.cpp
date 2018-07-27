@@ -1,27 +1,31 @@
 #include "GraphEdge.h"
-
+#include "GraphNode.h"
 
 
 GraphEdge::GraphEdge()
 {
+	target = nullptr;
+	cost = 0;
 }
 
-void GraphEdge::SetNode(GraphNode * node)
+void GraphEdge::SetTargetNode(GraphNode * node)
 {
+	target = node;
 }
 
-GraphNode * GraphEdge::GetNode()
+GraphNode * GraphEdge::GetTargetNode()
 {
-	return nullptr;
+	return target;
 }
 
 void GraphEdge::SetCost(float cost)
 {
+	this->cost = cost;
 }
 
 float GraphEdge::GetCost()
 {
-	return 0.0f;
+	return cost;
 }
 
 

@@ -19,10 +19,13 @@ public:
 	// Connects two nodes in the graph
 	void ConnectNode(GraphNode* a, GraphNode* b, float cost);
 
+	// Draw the Graph
+	void draw(aie::Renderer2D* renderer);
+
 	// Get the nodes
 	std::vector<GraphNode*> GetNodes();
 
-	// Djisktra shortest path search
+	// A* shortest path search
 	std::vector<GraphNode*> aStarSearch(GraphNode* startNode, GraphNode* endNode);
 
 	~Graph();

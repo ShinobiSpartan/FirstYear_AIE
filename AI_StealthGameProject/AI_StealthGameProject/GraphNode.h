@@ -29,7 +29,15 @@ public:
 	void SetGScore(float gScore);
 	float GetGScore();
 
+	// Set the f-score
+	void SetFScore(float fScore);
+	float GetFScore();
+
+
 	static bool CompareGScore(GraphNode* a, GraphNode* b);
+	static bool CompareFScore(GraphNode* a, GraphNode* b);
+
+	bool isHighlighted;
 
 	~GraphNode();
 
@@ -38,8 +46,8 @@ private:
 	bool					m_isVisited;
 	GraphNode*				m_parent;
 	float					m_gScore;
-	float					m_hScore;
 	float					m_fScore;
+	float					m_hScore;
 	std::vector<GraphEdge*>	m_connections;
 };
 

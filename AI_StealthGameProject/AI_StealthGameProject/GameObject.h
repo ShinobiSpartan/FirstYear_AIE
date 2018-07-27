@@ -12,7 +12,8 @@ namespace aie
 enum Race
 {
 	Player,
-	Alien
+	Alien,
+	S_Alien
 };
 
 class IBehaviour;

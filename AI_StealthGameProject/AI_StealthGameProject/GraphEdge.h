@@ -8,8 +8,8 @@ public:
 	GraphEdge();
 
 	// Setting the target node
-	void SetNode(GraphNode* node);
-	GraphNode* GetNode();
+	void SetTargetNode(GraphNode* node);
+	GraphNode* GetTargetNode();
 
 	// Cost of the edge
 	void SetCost(float cost);

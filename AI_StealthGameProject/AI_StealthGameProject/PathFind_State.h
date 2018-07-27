@@ -1,21 +1,21 @@
 #pragma once
-
 #include "State.h"
-#include "Application.h"
+#include <list>
 
-class Pursue_State : public State
+class Node;
+
+class PathFind_State : public State
 {
 public:
-	Pursue_State();
-	Pursue_State(GameObject* target);
-
+	PathFind_State();
+	PathFind_State(std::list<Node*> target);
 	virtual void update(GameObject* gameObject, StateMachine* sm, float deltaTime);
 	virtual void initiate(GameObject* gameObject);
 	virtual void exit(GameObject* gameObject);
 
-	~Pursue_State();
+	~PathFind_State();
 
 private:
-	GameObject * target;
+	std::list<Node*>	target;
 };
 
