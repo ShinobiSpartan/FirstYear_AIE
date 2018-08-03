@@ -7,6 +7,8 @@
 
 class GameObject;
 class Graph;
+class GraphNode;
+
 
 class AI_StealthGameProjectApp : public aie::Application {
 public:
@@ -20,15 +22,18 @@ public:
 	virtual void update(float deltaTime);
 	virtual void draw();
 
+	// Function to generate graph
 	void CreateGraph();
 
 protected:
 
 	aie::Renderer2D*			m_2dRenderer;
 	aie::Font*					m_font;
-	StateMachine*				m_finiteStateMachine;
-	std::vector<GameObject*>	m_gameObjects;
-	Graph*						m_graph;
 	Application*				m_Application;
+	StateMachine*				m_finiteStateMachine;
+	Graph*						m_graph;
+	std::vector<GameObject*>	m_gameObjects;
+	std::vector<GraphNode*>		m_targetPath;
+
 
 };

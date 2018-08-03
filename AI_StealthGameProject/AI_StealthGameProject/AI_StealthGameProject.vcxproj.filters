@@ -51,6 +51,9 @@
     <ClCompile Include="PathFind_State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Idle_State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI_StealthGameProjectApp.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PathFind_State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Idle_State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

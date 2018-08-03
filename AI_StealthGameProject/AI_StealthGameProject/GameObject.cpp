@@ -22,6 +22,7 @@ GameObject::GameObject(aie::Texture * texture, Vector2 position, Race objectRace
 
 void GameObject::update(float deltaTime)
 {
+	// Physics settings for enemy ai's (aliens)
 	if (m_race == Alien)
 	{
 		if (position.m_x < 0 || position.m_x > 1400 || position.m_y < 0 || position.m_y > 720)
@@ -33,6 +34,7 @@ void GameObject::update(float deltaTime)
 		acceleration = Vector2(0, 0);
 		m_behaviours->update(this, deltaTime);
 	}
+	// Physics settings for player
 	else if (m_race == Player)
 	{
 		if (position.m_x < 0 || position.m_x > 1400 || position.m_y < 0 || position.m_y > 720)
@@ -44,12 +46,29 @@ void GameObject::update(float deltaTime)
 		acceleration = Vector2(0, 0);
 		m_behaviours->update(this, deltaTime);
 	}
+	// Physics settings for smart AI
+	else if (m_race == S_Alien)
+	{
+		AddForce(velocity * -3.0f);
+		velocity = velocity + acceleration * deltaTime;
+		position = position + velocity * deltaTime;
+		acceleration = Vector2(0, 0);
+		m_behaviours->update(this, deltaTime);
+	}
 }
 
 void GameObject::draw(aie::Renderer2D * renderer)
 {
+	// Draws all of the sprites
 	renderer->drawSprite(texture, position.m_x, position.m_y);
-	//renderer->drawCircle(position.m_x, position.m_y, 250.0f);
+	
+	// Adds a detection radius around the dumb ai
+	if (m_race == Alien)
+	{
+		renderer->setRenderColour(1, 0.898f, 0, 0.2f);
+		renderer->drawCircle(position.m_x, position.m_y, 100.0f, 1.5f);
+		renderer->setRenderColour(1, 1, 1, 1);
+	}
 }
 
 void GameObject::AddForce(Vector2 force)

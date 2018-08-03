@@ -2,12 +2,12 @@
 #include "Texture.h"
 #include "Font.h"
 #include "Input.h"
+#include "Graph.h"
 #include "GameObject.h"
 #include "KeyboardController.h"
-#include "StateMachine.h"
 #include "Pursue_State.h"
 #include "Wander_State.h"
-#include "Graph.h"
+#include "PathFind_State.h"
 
 
 AI_StealthGameProjectApp::AI_StealthGameProjectApp() {
@@ -30,27 +30,26 @@ bool AI_StealthGameProjectApp::startup() {
 	m_graph = new Graph();
 	CreateGraph();
 
+	srand(time(nullptr));
+
 	// Pathfinding using the A* Method
 	GraphNode* startNode = m_graph->GetNodes()[740];
-	GraphNode* endNode = m_graph->GetNodes()[169];
+	GraphNode* endNode = m_graph->GetNodes()[rand() % 760 + 1];
 
-	std::vector<GraphNode*> path = m_graph->aStarSearch(startNode, endNode);
+	m_targetPath = m_graph->aStarSearch(startNode, endNode);
 
-	for (auto node : path)
+	for (auto node : m_targetPath)
 	{
 		node->isHighlighted = true;
 	}
 	
-
+	// Creates player object and adds Keyboard Controller to it
 	GameObject* m_player = new GameObject(new aie::Texture("../bin/textures/Player_Knife.png"), Vector2(100, 360), Player);
-	
 	m_gameObjects.push_back(m_player);
 	m_player->AddBehaviour(new KeyboardController(aie::Input::getInstance()));
 	
-
-	
-	
-	for (int i = 0; i < 40; i++)
+	// Creates series of 'dumb' enemies which wander until radii has been entered and then enters pursue state
+	for (int i = 0; i < 30; i++)
 	{
 		GameObject* newDumbEnemy = new GameObject(new aie::Texture("../bin/textures/Enemy_Sprite.png"), Vector2(1300, 360), Alien);
 		m_gameObjects.push_back(newDumbEnemy);
@@ -58,6 +57,13 @@ bool AI_StealthGameProjectApp::startup() {
 		m_finiteStateMachine->ChangeState(newDumbEnemy, new Wander_State(m_player, -5.0f, 20.0f, 1.0f));
 		newDumbEnemy->AddBehaviour(m_finiteStateMachine);
 	}
+
+	// Creates 'smart' ai which follows an A* path created to a random point
+	GameObject* newSmartEnemy = new GameObject(new aie::Texture("../bin/textures/SmartEnemy_Sprite.png"), Vector2(1225, 55), S_Alien);
+	m_gameObjects.push_back(newSmartEnemy);
+	m_finiteStateMachine = new StateMachine();
+	m_finiteStateMachine->ChangeState(newSmartEnemy, new PathFind_State(m_targetPath, m_graph));
+	newSmartEnemy->AddBehaviour(m_finiteStateMachine);
 
 	return true;
 }
@@ -78,6 +84,7 @@ void AI_StealthGameProjectApp::update(float deltaTime) {
 
 	srand(time(nullptr));
 
+	// Updates all game objects
 	for (auto gameObjects : m_gameObjects)
 		gameObjects->update(deltaTime);
 
@@ -113,16 +120,20 @@ void AI_StealthGameProjectApp::draw() {
 
 void AI_StealthGameProjectApp::CreateGraph()
 {
+	// Sets up the nodes on the x axis
 	for (int x = 0; x < 38; ++x)
 	{
+		// Sets up the nodes on the y axis
 		for (int y = 0; y < 20; ++y)
 		{
+			// Generates all of the nodes
 			GraphNode* node = new GraphNode();
 			node->SetPosition(Vector2(46 + x * 32, 55 + y * 32));
 			m_graph->AddNode(node);
 		}
 	}
 
+	// Generates all of the connections between the nodes
 	for (auto nodeA : m_graph->GetNodes())
 	{
 		for (auto nodeB : m_graph->GetNodes())

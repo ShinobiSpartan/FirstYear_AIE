@@ -33,10 +33,11 @@ public:
 	void SetFScore(float fScore);
 	float GetFScore();
 
-
+	// Compares two scores to find shortest path
 	static bool CompareGScore(GraphNode* a, GraphNode* b);
 	static bool CompareFScore(GraphNode* a, GraphNode* b);
 
+	// Checks if the nodes are to be highlighted
 	bool isHighlighted;
 
 	~GraphNode();

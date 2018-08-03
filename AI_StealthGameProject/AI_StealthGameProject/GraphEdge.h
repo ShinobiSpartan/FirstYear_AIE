@@ -17,6 +17,9 @@ public:
 
 	~GraphEdge();
 
+	// Checks if the edges are to be highlighted
+	bool isHighlighted;
+
 private:
 	GraphNode * target;
 	float		cost;

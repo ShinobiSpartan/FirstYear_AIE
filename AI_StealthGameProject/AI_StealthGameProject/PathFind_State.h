@@ -2,13 +2,14 @@
 #include "State.h"
 #include <list>
 
-class Node;
+class Graph;
+class GraphNode;
 
 class PathFind_State : public State
 {
 public:
 	PathFind_State();
-	PathFind_State(std::list<Node*> target);
+	PathFind_State(std::vector<GraphNode*> target, Graph* graph);
 	virtual void update(GameObject* gameObject, StateMachine* sm, float deltaTime);
 	virtual void initiate(GameObject* gameObject);
 	virtual void exit(GameObject* gameObject);
@@ -16,6 +17,8 @@ public:
 	~PathFind_State();
 
 private:
-	std::list<Node*>	target;
+	std::vector<GraphNode*>	m_target;
+	Graph*					m_graph;
+	GraphNode*				m_prevEndNode;
 };
 

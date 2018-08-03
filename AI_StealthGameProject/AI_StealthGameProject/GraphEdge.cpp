@@ -6,6 +6,8 @@ GraphEdge::GraphEdge()
 {
 	target = nullptr;
 	cost = 0;
+	isHighlighted = false;
+
 }
 
 void GraphEdge::SetTargetNode(GraphNode * node)

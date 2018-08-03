@@ -22,13 +22,18 @@ void Graph::draw(aie::Renderer2D * renderer)
 {
 	for (auto node : m_nodes)
 	{
-		renderer->setRenderColour(0.6f, 0.6f, 0.6f, 0.5f);
-		for (auto connect : node->GetConnections())
+		for (auto edge : node->GetConnections())
 		{
-			GraphEdge* edge = connect;
-			renderer->setRenderColour(0.6f, 0.6f, 0.6f, 0.6f);		
+			renderer->setRenderColour(0.6f, 0.6f, 0.6f, 0.6f);	
+
+			// Changes the colour of the edge if it is traversed
+			if (edge->isHighlighted == true)
+				renderer->setRenderColour(1, 0, 0, 1);
+
 			renderer->drawLine(node->GetPosition().m_x, node->GetPosition().m_y, edge->GetTargetNode()->GetPosition().m_x, edge->GetTargetNode()->GetPosition().m_y, 1.0f, 1.5f);
 		}
+		renderer->setRenderColour(0.6f, 0.6f, 0.6f, 0.5f);
+		// Changes the colour of the node if it is traversed
 		if (node->isHighlighted == true)
 			renderer->setRenderColour(1, 0, 0, 1);
 		
@@ -44,11 +49,13 @@ std::vector<GraphNode*> Graph::GetNodes()
 
 std::vector<GraphNode*> Graph::aStarSearch(GraphNode * startNode, GraphNode * endNode)
 {
+	// Sets all nodes to starting values
 	for (auto n : m_nodes)
 	{
 		n->SetParent(nullptr);
 		n->SetGScore(NULL);
 		n->SetFScore(INFINITY);
+		n->SetVisited(false);
 	}
 
 	std::list<GraphNode*> priorityQ;
@@ -86,6 +93,19 @@ std::vector<GraphNode*> Graph::aStarSearch(GraphNode * startNode, GraphNode * en
 	GraphNode* currentPathNode = endNode;
 	while (currentPathNode != nullptr)
 	{
+		for (auto edges : currentPathNode->GetConnections())
+		{
+			if (edges->GetTargetNode() == currentPathNode->GetParent())
+			{
+				edges->isHighlighted = true;
+				for (auto parentEdges : currentPathNode->GetParent()->GetConnections())
+				{
+					if (parentEdges->GetTargetNode() == currentPathNode)
+						parentEdges->isHighlighted = true;
+				}
+			}
+		}
+
 		enemyPath.push_back(currentPathNode);
 		currentPathNode = currentPathNode->GetParent();
 	}

@@ -7,6 +7,7 @@ GraphNode::GraphNode()
 	m_parent = nullptr;
 	m_isVisited = false;
 	m_position = Vector2(0, 0);
+	isHighlighted = false;
 }
 
 void GraphNode::SetPosition(Vector2 position)
