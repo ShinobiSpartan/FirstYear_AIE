@@ -51,16 +51,19 @@ void PathFind_State::update(GameObject * gameObject, StateMachine * sm, float de
 	{
 		//sm->ChangeState(gameObject, new Idle_State());
 
+		// Generate a random new end node
 		GraphNode* newEndNode = m_graph->GetNodes()[rand() % 760];
 
+		// Generate the new path with previously set random end node
 		m_target = m_graph->aStarSearch(m_prevEndNode, newEndNode);
 		
-
+		// Highlight the new path that the ai will follow
 		for (auto node : m_target)
 		{
 			node->isHighlighted = true;
 		}
 
+		// Store the end nopde of the new path for use as start node of new path
 		m_prevEndNode = m_target.front();
 	}
 }

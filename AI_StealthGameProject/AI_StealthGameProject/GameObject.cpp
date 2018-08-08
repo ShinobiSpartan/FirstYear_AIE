@@ -5,6 +5,7 @@
 
 GameObject::GameObject()
 {
+	// Sets all variables default values
 	texture = nullptr;
 	position = Vector2(0, 0);
 	acceleration = Vector2(0, 0);
@@ -13,6 +14,7 @@ GameObject::GameObject()
 
 GameObject::GameObject(aie::Texture * texture, Vector2 position, Race objectRace)
 {
+	// Assigns variables to correct functions
 	this->texture = texture;
 	this->position = position;
 	acceleration = Vector2(0, 0);
@@ -62,10 +64,10 @@ void GameObject::draw(aie::Renderer2D * renderer)
 	// Draws all of the sprites
 	renderer->drawSprite(texture, position.m_x, position.m_y);
 	
-	// Adds a detection radius around the dumb ai
+	// Adds a coloured detection radius around the dumb ai
 	if (m_race == Alien)
 	{
-		renderer->setRenderColour(1, 0.898f, 0, 0.2f);
+		renderer->setRenderColour(1, 0.898f, 0, 0.25f);
 		renderer->drawCircle(position.m_x, position.m_y, 100.0f, 1.5f);
 		renderer->setRenderColour(1, 1, 1, 1);
 	}

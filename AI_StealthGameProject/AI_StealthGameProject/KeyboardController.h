@@ -11,7 +11,7 @@ class KeyboardController : public IBehaviour
 public:
 	KeyboardController();
 	KeyboardController(aie::Input* input);
-	
+
 	virtual void update(GameObject* gameObject, float deltaTime);
 	
 	~KeyboardController();

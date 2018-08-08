@@ -16,17 +16,32 @@ Pursue_State::Pursue_State(GameObject * target)
 
 void Pursue_State::update(GameObject * gameObject, StateMachine * sm, float deltaTime)
 {
-	Vector2 desiredVel = target->GetPosition() + target->GetVelocity() - gameObject->GetPosition();
-	float mag = desiredVel.magnitude();
-	desiredVel.normalise();
-	desiredVel = desiredVel * 100;
-	Vector2 force = desiredVel - gameObject->GetVelocity();
+	// Calculate the distance between the agent and the position slightly ahead of the target
+	Vector2 anticipDist = target->GetPosition() + target->GetVelocity() - gameObject->GetPosition();
+	
+	// Get the magnitude of the distance
+	float mag = anticipDist.magnitude();
+	
+	// Normalise the value and add speed
+	anticipDist.normalise();
+	anticipDist = anticipDist * 100;
+
+	// Calculate the force needed to reach the target from the previous value and the current velocity of the game object
+	Vector2 force = anticipDist - gameObject->GetVelocity();
+	
+	// Apply the force to the game object
 	gameObject->AddForce(force);
 
+	// ------------------------------------------------------------------------------- //
+
+	// Calculate the distance between the agent and the target
 	Vector2 dist = target->GetPosition() - gameObject->GetPosition();
+	// Get the magnitude of the distance
 	float magFromTarget = dist.magnitude();
+	// If the magnitude is too low, set the target's position to the 'spawn'
 	if (magFromTarget < 15.0f)
 		target->SetPosition(Vector2 (100, 360));
+	// If the magnitude is too high, set the agent's state to wander
 	if (magFromTarget > 100.0f)
 		sm->ChangeState(gameObject, new Wander_State(target, 0.0f, 15.0f, 10.0f));
 }

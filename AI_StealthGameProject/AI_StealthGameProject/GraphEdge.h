@@ -9,10 +9,12 @@ public:
 
 	// Setting the target node
 	void SetTargetNode(GraphNode* node);
+	// Get the target node
 	GraphNode* GetTargetNode();
 
-	// Cost of the edge
+	// Set the cost of the current edge
 	void SetCost(float cost);
+	// Get the cost of the current edge
 	float GetCost();
 
 	~GraphEdge();

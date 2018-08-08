@@ -20,10 +20,8 @@ AI_StealthGameProjectApp::~AI_StealthGameProjectApp() {
 
 bool AI_StealthGameProjectApp::startup() {
 	
+	// Sets up renderer and font use
 	m_2dRenderer = new aie::Renderer2D();
-
-	// TODO: remember to change this when redistributing a build!
-	// the following path would be used instead: "./font/consolas.ttf"
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
 	// Setting up the graph
@@ -70,6 +68,7 @@ bool AI_StealthGameProjectApp::startup() {
 
 void AI_StealthGameProjectApp::shutdown() {
 
+	// Deletes all of the variables
 	for (auto gameObject : m_gameObjects)
 		delete gameObject;
 	delete m_font;

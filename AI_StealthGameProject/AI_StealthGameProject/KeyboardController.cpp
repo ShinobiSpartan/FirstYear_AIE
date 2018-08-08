@@ -14,6 +14,7 @@ KeyboardController::KeyboardController(aie::Input * input)
 
 void KeyboardController::update(GameObject * gameObject, float deltaTime)
 {
+	// If the directioal keys are pressed, add force to the relative direction
 	if (input->isKeyDown(aie::INPUT_KEY_UP))
 		gameObject->AddForce(Vector2(0, speed));
 

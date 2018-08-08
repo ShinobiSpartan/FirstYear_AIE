@@ -24,8 +24,9 @@ public:
 	GameObject();
 	GameObject(aie::Texture* texture, Vector2 position, Race objectRace);
 
-	// Update and Draw functions
+	// Update function for this object
 	void update(float deltaTime);
+	// Draw function for the object
 	void draw(aie::Renderer2D* renderer);
 
 	// Add forces
@@ -37,8 +38,9 @@ public:
 	// Get Velocity of object
 	Vector2 GetVelocity();
 	
-	// Setting and Getting position
+	// Sets the position of the object as a Vector2
 	void SetPosition(Vector2 pos);
+	// Gets the position of the current object
 	Vector2 GetPosition();
 
 	~GameObject();
