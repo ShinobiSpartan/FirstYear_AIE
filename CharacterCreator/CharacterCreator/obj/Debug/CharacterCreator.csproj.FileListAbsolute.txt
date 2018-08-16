@@ -1,0 +1,7 @@
+C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\CharacterCreator\CharacterCreator\bin\Debug\CharacterCreator.exe.config
+C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\CharacterCreator\CharacterCreator\bin\Debug\CharacterCreator.exe
+C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\CharacterCreator\CharacterCreator\bin\Debug\CharacterCreator.pdb
+C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\CharacterCreator\CharacterCreator\obj\Debug\CharacterCreator.csprojAssemblyReference.cache
+C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\CharacterCreator\CharacterCreator\obj\Debug\CharacterCreator.csproj.CoreCompileInputs.cache
+C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\CharacterCreator\CharacterCreator\obj\Debug\CharacterCreator.exe
+C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\CharacterCreator\CharacterCreator\obj\Debug\CharacterCreator.pdb
