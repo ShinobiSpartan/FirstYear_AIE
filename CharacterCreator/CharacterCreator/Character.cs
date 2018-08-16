@@ -9,21 +9,37 @@ namespace CharacterCreator
 {
     class Character
     {
-        public override string ToString()
+        private string name;
+
+        public string Name
         {
-            return base.ToString() + "\n\tpath: \t" + spritesheet.path + "\n\ttile coordiantes: \t" + tileCoordinates.ToString();
+            get { return name; }
+            set { name = value; }
         }
 
-        public string name;
+        private Spritesheet spritesheet;
 
-        public Spritesheet spritesheet;
+        public Spritesheet Spritesheet
+        {
+            get { return spritesheet; }
+        }
 
-        public Point tileCoordinates = new Point(0, 0);
+        private List<Layer> layers = new List<Layer>();
 
         public Character(string name, Spritesheet spritesheet)
         {
             this.name = name;
             this.spritesheet = spritesheet;
+        }
+
+        public void AddLayer(Layer layer)
+        {
+            layers.Add(layer);
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + "\n\tpath: \t" + spritesheet.ToString() + "\n\ttile coordiantes: \t" + layers[0].TileCoordinates.ToString();
         }
     }
 }
