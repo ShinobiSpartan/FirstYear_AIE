@@ -1,14 +1,1 @@
-﻿  Vector4.cpp
-c:\users\s173004\desktop\github\firstyear_aie\trunk\ai_stealthgameproject\mfg_mathlib\vector4.cpp(41): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\s173004\desktop\github\firstyear_aie\trunk\ai_stealthgameproject\mfg_mathlib\vector4.cpp(46): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Vector3.cpp
-c:\users\s173004\desktop\github\firstyear_aie\trunk\ai_stealthgameproject\mfg_mathlib\vector3.cpp(47): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\s173004\desktop\github\firstyear_aie\trunk\ai_stealthgameproject\mfg_mathlib\vector3.cpp(52): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Vector2.cpp
-c:\users\s173004\desktop\github\firstyear_aie\trunk\ai_stealthgameproject\mfg_mathlib\vector2.cpp(45): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\s173004\desktop\github\firstyear_aie\trunk\ai_stealthgameproject\mfg_mathlib\vector2.cpp(50): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Matrix4.cpp
-  Matrix3.cpp
-  Matrix2.cpp
-  Generating Code...
-  MFG_MathLib.vcxproj -> C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\AI_StealthGameProject\x64\Debug\MFG_MathLib.lib
+﻿  MFG_MathLib.vcxproj -> C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\AI_StealthGameProject\x64\Debug\MFG_MathLib.lib
