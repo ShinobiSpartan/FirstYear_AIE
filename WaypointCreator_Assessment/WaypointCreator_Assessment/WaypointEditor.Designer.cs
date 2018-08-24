@@ -36,6 +36,10 @@
             this.txt_GridHeight = new System.Windows.Forms.TextBox();
             this.btn_GenGrid = new System.Windows.Forms.Button();
             this.gb_Waypoints = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.waypointColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.xCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.yCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_AddWaypoint = new System.Windows.Forms.Button();
             this.gb_GridSettings = new System.Windows.Forms.GroupBox();
             this.btn_RemGrid = new System.Windows.Forms.Button();
@@ -49,10 +53,6 @@
             this.gb_Load = new System.Windows.Forms.GroupBox();
             this.rb_BinaryL = new System.Windows.Forms.RadioButton();
             this.rb_xmlL = new System.Windows.Forms.RadioButton();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.waypointColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.xCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.yCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pb_Map)).BeginInit();
             this.gb_Waypoints.SuspendLayout();
             this.gb_GridSettings.SuspendLayout();
@@ -68,7 +68,7 @@
             this.pb_Map.Cursor = System.Windows.Forms.Cursors.Default;
             this.pb_Map.Location = new System.Drawing.Point(12, 12);
             this.pb_Map.Name = "pb_Map";
-            this.pb_Map.Size = new System.Drawing.Size(848, 484);
+            this.pb_Map.Size = new System.Drawing.Size(849, 481);
             this.pb_Map.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pb_Map.TabIndex = 0;
             this.pb_Map.TabStop = false;
@@ -141,6 +141,36 @@
             this.gb_Waypoints.TabIndex = 8;
             this.gb_Waypoints.TabStop = false;
             this.gb_Waypoints.Text = "Waypoints";
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.waypointColumn,
+            this.xCoord,
+            this.yCoord});
+            this.listView1.Location = new System.Drawing.Point(6, 19);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(284, 332);
+            this.listView1.TabIndex = 4;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // waypointColumn
+            // 
+            this.waypointColumn.Text = "Waypoint";
+            this.waypointColumn.Width = 120;
+            // 
+            // xCoord
+            // 
+            this.xCoord.Text = "X Coordinate";
+            this.xCoord.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.xCoord.Width = 80;
+            // 
+            // yCoord
+            // 
+            this.yCoord.Text = "Y Coordinates";
+            this.yCoord.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.yCoord.Width = 80;
             // 
             // btn_AddWaypoint
             // 
@@ -279,36 +309,6 @@
             this.rb_xmlL.TabStop = true;
             this.rb_xmlL.Text = "XML";
             this.rb_xmlL.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.waypointColumn,
-            this.xCoord,
-            this.yCoord});
-            this.listView1.Location = new System.Drawing.Point(6, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(284, 332);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // waypointColumn
-            // 
-            this.waypointColumn.Text = "Waypoint";
-            this.waypointColumn.Width = 120;
-            // 
-            // xCoord
-            // 
-            this.xCoord.Text = "X Coordinate";
-            this.xCoord.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.xCoord.Width = 80;
-            // 
-            // yCoord
-            // 
-            this.yCoord.Text = "Y Coordinates";
-            this.yCoord.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.yCoord.Width = 80;
             // 
             // WaypointEditor
             // 
