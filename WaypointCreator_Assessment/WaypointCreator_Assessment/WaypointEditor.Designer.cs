@@ -36,7 +36,12 @@
             this.txt_GridHeight = new System.Windows.Forms.TextBox();
             this.btn_GenGrid = new System.Windows.Forms.Button();
             this.gb_Waypoints = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lbl_currentX = new System.Windows.Forms.Label();
+            this.lbl_currentY = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lv_Waypoints = new System.Windows.Forms.ListView();
             this.waypointColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.xCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.yCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -69,9 +74,10 @@
             this.pb_Map.Location = new System.Drawing.Point(12, 12);
             this.pb_Map.Name = "pb_Map";
             this.pb_Map.Size = new System.Drawing.Size(849, 481);
-            this.pb_Map.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pb_Map.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_Map.TabIndex = 0;
             this.pb_Map.TabStop = false;
+            this.pb_Map.Click += new System.EventHandler(this.pb_Map_Click);
             // 
             // btn_MapImport
             // 
@@ -107,7 +113,7 @@
             this.txt_GridWidth.Name = "txt_GridWidth";
             this.txt_GridWidth.Size = new System.Drawing.Size(45, 20);
             this.txt_GridWidth.TabIndex = 4;
-            this.txt_GridWidth.Text = "4";
+            this.txt_GridWidth.Text = "16";
             this.txt_GridWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_GridWidth.TextChanged += new System.EventHandler(this.txt_GridWidth_TextChanged);
             // 
@@ -117,7 +123,7 @@
             this.txt_GridHeight.Name = "txt_GridHeight";
             this.txt_GridHeight.Size = new System.Drawing.Size(45, 20);
             this.txt_GridHeight.TabIndex = 5;
-            this.txt_GridHeight.Text = "4";
+            this.txt_GridHeight.Text = "16";
             this.txt_GridHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_GridHeight.TextChanged += new System.EventHandler(this.txt_GridHeight_TextChanged);
             // 
@@ -133,27 +139,84 @@
             // 
             // gb_Waypoints
             // 
-            this.gb_Waypoints.Controls.Add(this.listView1);
+            this.gb_Waypoints.Controls.Add(this.lbl_currentX);
+            this.gb_Waypoints.Controls.Add(this.lbl_currentY);
+            this.gb_Waypoints.Controls.Add(this.label5);
+            this.gb_Waypoints.Controls.Add(this.label4);
+            this.gb_Waypoints.Controls.Add(this.label3);
+            this.gb_Waypoints.Controls.Add(this.lv_Waypoints);
             this.gb_Waypoints.Controls.Add(this.btn_AddWaypoint);
             this.gb_Waypoints.Location = new System.Drawing.Point(866, 12);
             this.gb_Waypoints.Name = "gb_Waypoints";
-            this.gb_Waypoints.Size = new System.Drawing.Size(296, 410);
+            this.gb_Waypoints.Size = new System.Drawing.Size(296, 481);
             this.gb_Waypoints.TabIndex = 8;
             this.gb_Waypoints.TabStop = false;
             this.gb_Waypoints.Text = "Waypoints";
             // 
-            // listView1
+            // lbl_currentX
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lbl_currentX.AutoSize = true;
+            this.lbl_currentX.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_currentX.Location = new System.Drawing.Point(35, 47);
+            this.lbl_currentX.Name = "lbl_currentX";
+            this.lbl_currentX.Size = new System.Drawing.Size(16, 18);
+            this.lbl_currentX.TabIndex = 9;
+            this.lbl_currentX.Text = "0";
+            this.lbl_currentX.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lbl_currentY
+            // 
+            this.lbl_currentY.AutoSize = true;
+            this.lbl_currentY.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_currentY.Location = new System.Drawing.Point(35, 65);
+            this.lbl_currentY.Name = "lbl_currentY";
+            this.lbl_currentY.Size = new System.Drawing.Size(16, 18);
+            this.lbl_currentY.TabIndex = 8;
+            this.lbl_currentY.Text = "0";
+            this.lbl_currentY.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(7, 65);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 18);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Y:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(7, 47);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(22, 18);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "X:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 18);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Current Point:";
+            // 
+            // lv_Waypoints
+            // 
+            this.lv_Waypoints.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.waypointColumn,
             this.xCoord,
             this.yCoord});
-            this.listView1.Location = new System.Drawing.Point(6, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(284, 332);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lv_Waypoints.Location = new System.Drawing.Point(6, 105);
+            this.lv_Waypoints.Name = "lv_Waypoints";
+            this.lv_Waypoints.Size = new System.Drawing.Size(284, 370);
+            this.lv_Waypoints.TabIndex = 4;
+            this.lv_Waypoints.UseCompatibleStateImageBehavior = false;
+            this.lv_Waypoints.View = System.Windows.Forms.View.Details;
             // 
             // waypointColumn
             // 
@@ -168,18 +231,19 @@
             // 
             // yCoord
             // 
-            this.yCoord.Text = "Y Coordinates";
+            this.yCoord.Text = "Y Coordinate";
             this.yCoord.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.yCoord.Width = 80;
             // 
             // btn_AddWaypoint
             // 
-            this.btn_AddWaypoint.Location = new System.Drawing.Point(7, 357);
+            this.btn_AddWaypoint.Location = new System.Drawing.Point(176, 19);
             this.btn_AddWaypoint.Name = "btn_AddWaypoint";
             this.btn_AddWaypoint.Size = new System.Drawing.Size(114, 32);
             this.btn_AddWaypoint.TabIndex = 3;
             this.btn_AddWaypoint.Text = "Add Waypoint";
             this.btn_AddWaypoint.UseVisualStyleBackColor = true;
+            this.btn_AddWaypoint.Click += new System.EventHandler(this.btn_AddWaypoint_Click);
             // 
             // gb_GridSettings
             // 
@@ -327,6 +391,7 @@
             this.Text = "Waypoint Creator/Editor";
             ((System.ComponentModel.ISupportInitialize)(this.pb_Map)).EndInit();
             this.gb_Waypoints.ResumeLayout(false);
+            this.gb_Waypoints.PerformLayout();
             this.gb_GridSettings.ResumeLayout(false);
             this.gb_GridSettings.PerformLayout();
             this.gb_MapSettings.ResumeLayout(false);
@@ -335,7 +400,6 @@
             this.gb_Load.ResumeLayout(false);
             this.gb_Load.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -360,11 +424,16 @@
         private System.Windows.Forms.RadioButton rb_xmlL;
         private System.Windows.Forms.Button btn_AddWaypoint;
         private System.Windows.Forms.Button btn_RemGrid;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lv_Waypoints;
         private System.Windows.Forms.ColumnHeader waypointColumn;
         private System.Windows.Forms.ColumnHeader xCoord;
         private System.Windows.Forms.ColumnHeader yCoord;
         private System.Windows.Forms.PictureBox pb_Map;
+        private System.Windows.Forms.Label lbl_currentX;
+        private System.Windows.Forms.Label lbl_currentY;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }
 
