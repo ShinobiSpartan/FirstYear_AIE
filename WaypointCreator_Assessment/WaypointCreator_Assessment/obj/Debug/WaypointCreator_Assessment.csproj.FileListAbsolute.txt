@@ -9,3 +9,13 @@ C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\WaypointCreator_Asses
 C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.csproj.CoreCompileInputs.cache
 C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.exe
 C:\Users\s173004\Desktop\GitHub Folder\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.pdb
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\bin\Debug\WaypointCreator_Assessment.exe.config
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\bin\Debug\WaypointCreator_Assessment.exe
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\bin\Debug\WaypointCreator_Assessment.pdb
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.Properties.Resources.resources
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.WaypointCreatorHome.resources
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.WaypointEditor.resources
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.csproj.GenerateResource.Cache
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.csproj.CoreCompileInputs.cache
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.exe
+C:\Users\s173004\Desktop\Github\FirstYear_AIE\trunk\WaypointCreator_Assessment\WaypointCreator_Assessment\obj\Debug\WaypointCreator_Assessment.pdb

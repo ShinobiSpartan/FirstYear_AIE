@@ -21,6 +21,7 @@ namespace WaypointCreator_Assessment
         int gridWidth = 16;
         int gridHeight = 16;
 
+        Graphics g;
         int counter = 0;
         string[] waypointsArray = new string[3];
         ListViewItem item;
@@ -28,8 +29,8 @@ namespace WaypointCreator_Assessment
         public WaypointEditor()
         {
             InitializeComponent();
-
             drawArea = new Bitmap(pb_Map.Width, pb_Map.Height);
+            g = Graphics.FromImage(drawArea);
         }
 
         private void btn_ImageImport_Click(object sender, EventArgs e)
@@ -49,19 +50,21 @@ namespace WaypointCreator_Assessment
 
         private void DrawImage()
         { 
-            Bitmap image = new Bitmap(map.image);
-            pb_Map.Image = (Image)image;
+
+            //pb_Map.Image = (Image)image;
+            pb_Map.Image = drawArea;
         }
 
         private void btn_GenGrid_Click(object sender, EventArgs e)
         {
             pb_Map.DrawToBitmap(drawArea, pb_Map.Bounds);
 
-            Graphics g;
-            g = Graphics.FromImage(drawArea);
 
-            g.Clear(Color.White);
-
+            //g = Graphics.FromImage(drawArea);
+            g.Clear(Color.Transparent);
+            Bitmap image = new Bitmap(map.image);
+            image.Width = pb_Map.Width;
+            g.DrawImage(image, 0, 0);
             Pen pen = new Pen(Brushes.Black);
 
             int height = pb_Map.Height;
@@ -77,8 +80,7 @@ namespace WaypointCreator_Assessment
                 g.DrawLine(pen, x, 0, x, height);
             }
 
-            g.Dispose();
-
+            //g.Dispose();
             pb_Map.Image = drawArea;
         }
 
@@ -123,11 +125,9 @@ namespace WaypointCreator_Assessment
 
         private void pb_Map_Click(object sender, EventArgs e)
         {
-            Graphics g;
-            g = Graphics.FromImage(drawArea);
             SolidBrush sBrush = new SolidBrush(Color.Red);
 
-            g.Clear(Color.White);
+            //g.Clear(Color.White);
 
             if (e.GetType() == typeof(MouseEventArgs))
             {
@@ -138,7 +138,7 @@ namespace WaypointCreator_Assessment
 
                 g.FillEllipse(sBrush, me.Location.X, me.Location.Y, 8, 8);
 
-                g.Dispose();
+               // g.Dispose();
 
                 pb_Map.Image = drawArea;
 
