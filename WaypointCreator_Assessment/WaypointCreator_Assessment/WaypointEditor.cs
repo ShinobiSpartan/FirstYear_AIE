@@ -10,27 +10,33 @@ using System.Windows.Forms;
 using System.IO;
 
 namespace WaypointCreator_Assessment
-{ 
-
-
+{
     public partial class WaypointEditor : Form
     {
         Map map = null;
         Bitmap drawArea;
+        List<WayPointLocation> points;
 
         int gridWidth = 16;
         int gridHeight = 16;
 
+        int currentX = 0;
+        int currentY = 0;
+
         Graphics g;
         int counter = 0;
         string[] waypointsArray = new string[3];
-        ListViewItem item;
-
+        // ListViewItem item;
+      
         public WaypointEditor()
         {
             InitializeComponent();
+
             drawArea = new Bitmap(pb_Map.Width, pb_Map.Height);
             g = Graphics.FromImage(drawArea);
+
+            points = new List<WayPointLocation>();
+            dataGridView1.DataSource = points;
         }
 
         private void btn_ImageImport_Click(object sender, EventArgs e)
@@ -43,29 +49,48 @@ namespace WaypointCreator_Assessment
                 if(dlg.CheckFileExists == true)
                 {
                     map = new Map(dlg.FileName);
-                    DrawImage();
+
+                    Bitmap image = new Bitmap(map.image, new Size(pb_Map.Width, pb_Map.Height));
+                    g.DrawImage(image, 0, 0);
                 }
             }
-        }
-
-        private void DrawImage()
-        { 
-
-            //pb_Map.Image = (Image)image;
             pb_Map.Image = drawArea;
+
+            if (map != null)
+            {
+                gb_GridSettings.Enabled = true;
+                btn_SaveWaypoints.Enabled = true;
+                btn_LoadWaypoints.Enabled = true;
+            }
         }
-
-        private void btn_GenGrid_Click(object sender, EventArgs e)
+        private void btn_MapRemove_Click(object sender, EventArgs e)
         {
-            pb_Map.DrawToBitmap(drawArea, pb_Map.Bounds);
+            g.Clear(Color.White);
+
+            map = null;
+
+            pb_Map.Image = drawArea;
+
+            currentX = 0;
+            currentY = 0;
+
+            lbl_currentX.Text = currentX.ToString();
+            lbl_currentY.Text = currentY.ToString();
 
 
-            //g = Graphics.FromImage(drawArea);
-            g.Clear(Color.Transparent);
-            Bitmap image = new Bitmap(map.image);
-            image.Width = pb_Map.Width;
-            g.DrawImage(image, 0, 0);
-            Pen pen = new Pen(Brushes.Black);
+            if (map == null)
+            {
+                gb_GridSettings.Enabled = false;
+                btn_SaveWaypoints.Enabled = false;
+                btn_LoadWaypoints.Enabled = false;
+                btn_AddWaypoint.Enabled = false;
+                pb_Map.Enabled = false;
+            }
+
+        }
+        private void DrawGrid()
+        {
+            Pen pen = new Pen(Brushes.DarkGray);
 
             int height = pb_Map.Height;
             int width = pb_Map.Width;
@@ -79,21 +104,35 @@ namespace WaypointCreator_Assessment
             {
                 g.DrawLine(pen, x, 0, x, height);
             }
-
-            //g.Dispose();
-            pb_Map.Image = drawArea;
         }
-
-        private void btn_RemGrid_Click(object sender, EventArgs e)
+        private void btn_GenGrid_Click(object sender, EventArgs e)
         {
-            Graphics g;
-            g = Graphics.FromImage(drawArea);
+            pb_Map.DrawToBitmap(drawArea, pb_Map.Bounds);
+
+            //g = Graphics.FromImage(drawArea);
+            g.Clear(Color.White);
+            Bitmap image = new Bitmap(map.image, new Size(pb_Map.Width, pb_Map.Height));
+            g.DrawImage(image, 0, 0);
+
+            DrawGrid();
+
+            pb_Map.Image = drawArea;
+
+            pb_Map.Enabled = true;
+            btn_AddWaypoint.Enabled = true;
+        }
+        private void btn_RemGrid_Click(object sender, EventArgs e)
+        { 
             g.Clear(Color.White);
 
-            g.Dispose();
-            pb_Map.Image = drawArea;
-        }
+            Bitmap image = new Bitmap(map.image, new Size(pb_Map.Width, pb_Map.Height));
+            g.DrawImage(image, 0, 0);
 
+            pb_Map.Image = drawArea;
+
+            pb_Map.Enabled = false;
+            btn_AddWaypoint.Enabled = false;
+        }
         private void txt_GridWidth_TextChanged(object sender, EventArgs e)
         {
 
@@ -108,7 +147,6 @@ namespace WaypointCreator_Assessment
                 txt_GridWidth.Text = gridWidth.ToString();
             }
         }
-
         private void txt_GridHeight_TextChanged(object sender, EventArgs e)
         {
             if (int.TryParse(txt_GridHeight.Text, out gridHeight) == true)
@@ -122,37 +160,85 @@ namespace WaypointCreator_Assessment
                 txt_GridHeight.Text = gridHeight.ToString();
             }
         }
-
         private void pb_Map_Click(object sender, EventArgs e)
         {
-            SolidBrush sBrush = new SolidBrush(Color.Red);
-
-            //g.Clear(Color.White);
+            SolidBrush sBrushTemp = new SolidBrush(Color.Red);
 
             if (e.GetType() == typeof(MouseEventArgs))
             {
+                g.Clear(Color.White);
+
+                Bitmap image = new Bitmap(map.image, new Size(pb_Map.Width, pb_Map.Height));
+                g.DrawImage(image, 0, 0);
+
+                DrawGrid();
+
                 MouseEventArgs me = e as MouseEventArgs;
 
-                lbl_currentX.Text = me.Location.X.ToString();
-                lbl_currentY.Text = me.Location.Y.ToString();
+                currentX = me.Location.X;
+                currentY = me.Location.Y;
 
-                g.FillEllipse(sBrush, me.Location.X, me.Location.Y, 8, 8);
+                g.FillEllipse(sBrushTemp, me.Location.X, me.Location.Y, 8, 8);
 
-               // g.Dispose();
+                
+
+                lbl_currentX.Text = currentX.ToString();
+                lbl_currentY.Text = currentY.ToString();
+
 
                 pb_Map.Image = drawArea;
-
             }
         }
-
         private void btn_AddWaypoint_Click(object sender, EventArgs e)
         {
-            waypointsArray[0] = "Waypoint " + counter++;
-            waypointsArray[1] = lbl_currentX.Text;
-            waypointsArray[2] = lbl_currentY.Text;
+            WayPointLocation point = new WayPointLocation();
 
-            item = new ListViewItem(waypointsArray);
-            lv_Waypoints.Items.Add(item);
+            point.Name = "Waypoint " + counter++;
+            point.PointX = currentX;
+            point.PointY = currentY;
+
+            DataTable table = ConvertListToDataTable();
+            dataGridView1.DataSource = table;
+            
+            //lv_Waypoints.Items.Add(item);
+
+           // DrawWaypoints();
+        }
+        private void DrawWaypoints()
+        {
+            SolidBrush sBrushWaypoint = new SolidBrush(Color.Yellow);
+
+            g.FillEllipse(sBrushWaypoint, currentX, currentY, 8, 8);
+
+            pb_Map.Image = drawArea;
+        }
+
+
+        static DataTable ConvertListToDataTable(List<string[]> list)
+        {
+            DataTable table = new DataTable();
+
+            int columns = 0;
+
+            foreach(var array in list)
+            {
+                if(array.Length > columns)
+                {
+                    columns = array.Length;
+                }
+            }
+
+            for(int i = 0; i <columns; i++)
+            {
+                table.Columns.Add();
+            }
+
+            foreach (var array in list)
+            {
+                table.Rows.Add(array);
+            }
+
+            return table;
         }
     }
 }

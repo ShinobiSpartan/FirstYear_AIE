@@ -60,6 +60,7 @@
     <Compile Include="WaypointCreatorHome.Designer.cs">
       <DependentUpon>WaypointCreatorHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="WayPointLocation.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,6 +77,7 @@
     <EmbeddedResource Include="WaypointEditor.resx">
       <DependentUpon>WaypointEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\WayPointLocation.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

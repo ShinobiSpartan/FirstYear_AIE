@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pb_Map = new System.Windows.Forms.PictureBox();
             this.btn_MapImport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,12 +59,16 @@
             this.gb_Load = new System.Windows.Forms.GroupBox();
             this.rb_BinaryL = new System.Windows.Forms.RadioButton();
             this.rb_xmlL = new System.Windows.Forms.RadioButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.wayPointLocationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pb_Map)).BeginInit();
             this.gb_Waypoints.SuspendLayout();
             this.gb_GridSettings.SuspendLayout();
             this.gb_MapSettings.SuspendLayout();
             this.gb_Save.SuspendLayout();
             this.gb_Load.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wayPointLocationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pb_Map
@@ -71,6 +76,7 @@
             this.pb_Map.BackColor = System.Drawing.Color.White;
             this.pb_Map.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pb_Map.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pb_Map.Enabled = false;
             this.pb_Map.Location = new System.Drawing.Point(12, 12);
             this.pb_Map.Name = "pb_Map";
             this.pb_Map.Size = new System.Drawing.Size(849, 481);
@@ -139,6 +145,7 @@
             // 
             // gb_Waypoints
             // 
+            this.gb_Waypoints.Controls.Add(this.dataGridView1);
             this.gb_Waypoints.Controls.Add(this.lbl_currentX);
             this.gb_Waypoints.Controls.Add(this.lbl_currentY);
             this.gb_Waypoints.Controls.Add(this.label5);
@@ -213,7 +220,7 @@
             this.yCoord});
             this.lv_Waypoints.Location = new System.Drawing.Point(6, 105);
             this.lv_Waypoints.Name = "lv_Waypoints";
-            this.lv_Waypoints.Size = new System.Drawing.Size(284, 370);
+            this.lv_Waypoints.Size = new System.Drawing.Size(284, 116);
             this.lv_Waypoints.TabIndex = 4;
             this.lv_Waypoints.UseCompatibleStateImageBehavior = false;
             this.lv_Waypoints.View = System.Windows.Forms.View.Details;
@@ -237,6 +244,7 @@
             // 
             // btn_AddWaypoint
             // 
+            this.btn_AddWaypoint.Enabled = false;
             this.btn_AddWaypoint.Location = new System.Drawing.Point(176, 19);
             this.btn_AddWaypoint.Name = "btn_AddWaypoint";
             this.btn_AddWaypoint.Size = new System.Drawing.Size(114, 32);
@@ -253,7 +261,8 @@
             this.gb_GridSettings.Controls.Add(this.label2);
             this.gb_GridSettings.Controls.Add(this.txt_GridHeight);
             this.gb_GridSettings.Controls.Add(this.btn_GenGrid);
-            this.gb_GridSettings.Location = new System.Drawing.Point(12, 506);
+            this.gb_GridSettings.Enabled = false;
+            this.gb_GridSettings.Location = new System.Drawing.Point(146, 506);
             this.gb_GridSettings.Name = "gb_GridSettings";
             this.gb_GridSettings.Size = new System.Drawing.Size(254, 116);
             this.gb_GridSettings.TabIndex = 9;
@@ -274,7 +283,7 @@
             // 
             this.gb_MapSettings.Controls.Add(this.btn_MapRemove);
             this.gb_MapSettings.Controls.Add(this.btn_MapImport);
-            this.gb_MapSettings.Location = new System.Drawing.Point(304, 506);
+            this.gb_MapSettings.Location = new System.Drawing.Point(12, 506);
             this.gb_MapSettings.Name = "gb_MapSettings";
             this.gb_MapSettings.Size = new System.Drawing.Size(128, 109);
             this.gb_MapSettings.TabIndex = 10;
@@ -289,6 +298,7 @@
             this.btn_MapRemove.TabIndex = 2;
             this.btn_MapRemove.Text = "Remove Map";
             this.btn_MapRemove.UseVisualStyleBackColor = true;
+            this.btn_MapRemove.Click += new System.EventHandler(this.btn_MapRemove_Click);
             // 
             // gb_Save
             // 
@@ -325,6 +335,7 @@
             // 
             // btn_SaveWaypoints
             // 
+            this.btn_SaveWaypoints.Enabled = false;
             this.btn_SaveWaypoints.Location = new System.Drawing.Point(628, 582);
             this.btn_SaveWaypoints.Name = "btn_SaveWaypoints";
             this.btn_SaveWaypoints.Size = new System.Drawing.Size(114, 32);
@@ -334,6 +345,7 @@
             // 
             // btn_LoadWaypoints
             // 
+            this.btn_LoadWaypoints.Enabled = false;
             this.btn_LoadWaypoints.Location = new System.Drawing.Point(747, 582);
             this.btn_LoadWaypoints.Name = "btn_LoadWaypoints";
             this.btn_LoadWaypoints.Size = new System.Drawing.Size(114, 32);
@@ -374,6 +386,18 @@
             this.rb_xmlL.Text = "XML";
             this.rb_xmlL.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 227);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(284, 248);
+            this.dataGridView1.TabIndex = 10;
+            // 
+            // wayPointLocationBindingSource
+            // 
+            this.wayPointLocationBindingSource.DataSource = typeof(WaypointCreator_Assessment.WayPointLocation);
+            // 
             // WaypointEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,6 +423,8 @@
             this.gb_Save.PerformLayout();
             this.gb_Load.ResumeLayout(false);
             this.gb_Load.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wayPointLocationBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -434,6 +460,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource wayPointLocationBindingSource;
     }
 }
 
