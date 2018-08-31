@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Map.cs" />
+    <Compile Include="MyException.cs" />
     <Compile Include="WaypointEditor.cs">
       <SubType>Form</SubType>
     </Compile>

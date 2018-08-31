@@ -12,6 +12,12 @@ namespace WaypointCreator_Assessment
         public Image image { get; private set; }
         private string path;
 
+        public Map()
+        {
+            image = null;
+            path = null;
+        }
+
         public Map (string path)
         {
             this.path = path;

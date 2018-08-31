@@ -14,13 +14,13 @@ namespace WaypointCreator_Assessment
             get;
             set;
         }
-        public int PointX
+        public int Point_X
         {
             get;
             set;
         }
 
-        public int PointY
+        public int Point_Y
         {
             get;
             set;

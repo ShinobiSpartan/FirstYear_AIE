@@ -25,8 +25,6 @@ namespace WaypointCreator_Assessment
 
         Graphics g;
         int counter = 0;
-        string[] waypointsArray = new string[3];
-        // ListViewItem item;
       
         public WaypointEditor()
         {
@@ -36,7 +34,7 @@ namespace WaypointCreator_Assessment
             g = Graphics.FromImage(drawArea);
 
             points = new List<WayPointLocation>();
-            dataGridView1.DataSource = points;
+            dgv_Waypoints.DataSource = points;
         }
 
         private void btn_ImageImport_Click(object sender, EventArgs e)
@@ -59,8 +57,6 @@ namespace WaypointCreator_Assessment
             if (map != null)
             {
                 gb_GridSettings.Enabled = true;
-                btn_SaveWaypoints.Enabled = true;
-                btn_LoadWaypoints.Enabled = true;
             }
         }
         private void btn_MapRemove_Click(object sender, EventArgs e)
@@ -115,11 +111,14 @@ namespace WaypointCreator_Assessment
             g.DrawImage(image, 0, 0);
 
             DrawGrid();
+            DrawWaypoints();
 
             pb_Map.Image = drawArea;
 
             pb_Map.Enabled = true;
             btn_AddWaypoint.Enabled = true;
+            btn_SaveWaypoints.Enabled = true;
+            btn_LoadWaypoints.Enabled = true;
         }
         private void btn_RemGrid_Click(object sender, EventArgs e)
         { 
@@ -132,6 +131,8 @@ namespace WaypointCreator_Assessment
 
             pb_Map.Enabled = false;
             btn_AddWaypoint.Enabled = false;
+            btn_SaveWaypoints.Enabled = false;
+            btn_LoadWaypoints.Enabled = false;
         }
         private void txt_GridWidth_TextChanged(object sender, EventArgs e)
         {
@@ -172,6 +173,7 @@ namespace WaypointCreator_Assessment
                 g.DrawImage(image, 0, 0);
 
                 DrawGrid();
+                DrawWaypoints();
 
                 MouseEventArgs me = e as MouseEventArgs;
 
@@ -194,48 +196,41 @@ namespace WaypointCreator_Assessment
             WayPointLocation point = new WayPointLocation();
 
             point.Name = "Waypoint " + counter++;
-            point.PointX = currentX;
-            point.PointY = currentY;
+            point.Point_X = currentX;
+            point.Point_Y = currentY;
 
-            DataTable table = ConvertListToDataTable();
-            dataGridView1.DataSource = table;
-            
-            //lv_Waypoints.Items.Add(item);
+            points.Add(point);
 
-           // DrawWaypoints();
+            DataTable table = ConvertListToDataTable(points);
+            dgv_Waypoints.DataSource = table;
+
+            DrawWaypoints();
         }
         private void DrawWaypoints()
         {
             SolidBrush sBrushWaypoint = new SolidBrush(Color.Yellow);
 
-            g.FillEllipse(sBrushWaypoint, currentX, currentY, 8, 8);
+            for (int i = 0; i < points.Count; i++)
+            {
+                g.FillEllipse(sBrushWaypoint, points[i].Point_X, points[i].Point_Y, 8, 8);
+            }
 
             pb_Map.Image = drawArea;
         }
 
 
-        static DataTable ConvertListToDataTable(List<string[]> list)
+        static DataTable ConvertListToDataTable(List<WayPointLocation> list)
         {
             DataTable table = new DataTable();
 
-            int columns = 0;
+            table.Columns.Add("Name");
+            table.Columns.Add("Point X");
+            table.Columns.Add("Point Y");
 
-            foreach(var array in list)
-            {
-                if(array.Length > columns)
-                {
-                    columns = array.Length;
-                }
-            }
-
-            for(int i = 0; i <columns; i++)
-            {
-                table.Columns.Add();
-            }
 
             foreach (var array in list)
             {
-                table.Rows.Add(array);
+                table.Rows.Add(array.Name, array.Point_X, array.Point_Y);
             }
 
             return table;

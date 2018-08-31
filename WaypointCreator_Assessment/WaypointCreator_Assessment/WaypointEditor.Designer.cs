@@ -37,15 +37,12 @@
             this.txt_GridHeight = new System.Windows.Forms.TextBox();
             this.btn_GenGrid = new System.Windows.Forms.Button();
             this.gb_Waypoints = new System.Windows.Forms.GroupBox();
+            this.dgv_Waypoints = new System.Windows.Forms.DataGridView();
             this.lbl_currentX = new System.Windows.Forms.Label();
             this.lbl_currentY = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lv_Waypoints = new System.Windows.Forms.ListView();
-            this.waypointColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.xCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.yCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_AddWaypoint = new System.Windows.Forms.Button();
             this.gb_GridSettings = new System.Windows.Forms.GroupBox();
             this.btn_RemGrid = new System.Windows.Forms.Button();
@@ -59,15 +56,14 @@
             this.gb_Load = new System.Windows.Forms.GroupBox();
             this.rb_BinaryL = new System.Windows.Forms.RadioButton();
             this.rb_xmlL = new System.Windows.Forms.RadioButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.wayPointLocationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pb_Map)).BeginInit();
             this.gb_Waypoints.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Waypoints)).BeginInit();
             this.gb_GridSettings.SuspendLayout();
             this.gb_MapSettings.SuspendLayout();
             this.gb_Save.SuspendLayout();
             this.gb_Load.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wayPointLocationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,13 +141,12 @@
             // 
             // gb_Waypoints
             // 
-            this.gb_Waypoints.Controls.Add(this.dataGridView1);
+            this.gb_Waypoints.Controls.Add(this.dgv_Waypoints);
             this.gb_Waypoints.Controls.Add(this.lbl_currentX);
             this.gb_Waypoints.Controls.Add(this.lbl_currentY);
             this.gb_Waypoints.Controls.Add(this.label5);
             this.gb_Waypoints.Controls.Add(this.label4);
             this.gb_Waypoints.Controls.Add(this.label3);
-            this.gb_Waypoints.Controls.Add(this.lv_Waypoints);
             this.gb_Waypoints.Controls.Add(this.btn_AddWaypoint);
             this.gb_Waypoints.Location = new System.Drawing.Point(866, 12);
             this.gb_Waypoints.Name = "gb_Waypoints";
@@ -159,6 +154,14 @@
             this.gb_Waypoints.TabIndex = 8;
             this.gb_Waypoints.TabStop = false;
             this.gb_Waypoints.Text = "Waypoints";
+            // 
+            // dgv_Waypoints
+            // 
+            this.dgv_Waypoints.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Waypoints.Location = new System.Drawing.Point(6, 86);
+            this.dgv_Waypoints.Name = "dgv_Waypoints";
+            this.dgv_Waypoints.Size = new System.Drawing.Size(284, 389);
+            this.dgv_Waypoints.TabIndex = 10;
             // 
             // lbl_currentX
             // 
@@ -211,36 +214,6 @@
             this.label3.Size = new System.Drawing.Size(99, 18);
             this.label3.TabIndex = 5;
             this.label3.Text = "Current Point:";
-            // 
-            // lv_Waypoints
-            // 
-            this.lv_Waypoints.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.waypointColumn,
-            this.xCoord,
-            this.yCoord});
-            this.lv_Waypoints.Location = new System.Drawing.Point(6, 105);
-            this.lv_Waypoints.Name = "lv_Waypoints";
-            this.lv_Waypoints.Size = new System.Drawing.Size(284, 116);
-            this.lv_Waypoints.TabIndex = 4;
-            this.lv_Waypoints.UseCompatibleStateImageBehavior = false;
-            this.lv_Waypoints.View = System.Windows.Forms.View.Details;
-            // 
-            // waypointColumn
-            // 
-            this.waypointColumn.Text = "Waypoint";
-            this.waypointColumn.Width = 120;
-            // 
-            // xCoord
-            // 
-            this.xCoord.Text = "X Coordinate";
-            this.xCoord.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.xCoord.Width = 80;
-            // 
-            // yCoord
-            // 
-            this.yCoord.Text = "Y Coordinate";
-            this.yCoord.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.yCoord.Width = 80;
             // 
             // btn_AddWaypoint
             // 
@@ -386,14 +359,6 @@
             this.rb_xmlL.Text = "XML";
             this.rb_xmlL.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 227);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(284, 248);
-            this.dataGridView1.TabIndex = 10;
-            // 
             // wayPointLocationBindingSource
             // 
             this.wayPointLocationBindingSource.DataSource = typeof(WaypointCreator_Assessment.WayPointLocation);
@@ -416,6 +381,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_Map)).EndInit();
             this.gb_Waypoints.ResumeLayout(false);
             this.gb_Waypoints.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Waypoints)).EndInit();
             this.gb_GridSettings.ResumeLayout(false);
             this.gb_GridSettings.PerformLayout();
             this.gb_MapSettings.ResumeLayout(false);
@@ -423,7 +389,6 @@
             this.gb_Save.PerformLayout();
             this.gb_Load.ResumeLayout(false);
             this.gb_Load.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wayPointLocationBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -450,17 +415,13 @@
         private System.Windows.Forms.RadioButton rb_xmlL;
         private System.Windows.Forms.Button btn_AddWaypoint;
         private System.Windows.Forms.Button btn_RemGrid;
-        private System.Windows.Forms.ListView lv_Waypoints;
-        private System.Windows.Forms.ColumnHeader waypointColumn;
-        private System.Windows.Forms.ColumnHeader xCoord;
-        private System.Windows.Forms.ColumnHeader yCoord;
         private System.Windows.Forms.PictureBox pb_Map;
         private System.Windows.Forms.Label lbl_currentX;
         private System.Windows.Forms.Label lbl_currentY;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_Waypoints;
         private System.Windows.Forms.BindingSource wayPointLocationBindingSource;
     }
 }
