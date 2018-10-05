@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WaypointSaver xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <savedPoints>
+    <WayPointLocation>
+      <Name>Waypoint 1</Name>
+      <Point_X>273</Point_X>
+      <Point_Y>198</Point_Y>
+    </WayPointLocation>
+  </savedPoints>
+</WaypointSaver>
