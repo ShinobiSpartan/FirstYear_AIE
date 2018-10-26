@@ -1,0 +1,6 @@
+﻿  BootstrapGameTestApp.cpp
+  main.cpp
+  Generating Code...
+c:\users\njmey\desktop\github\aie_work\trunk\bootstrapgametest\bootstrapgametest\bootstrapgametestapp.cpp(47): warning C4715: 'BootstrapGameTestApp::startup': not all control paths return a value
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  BootstrapGameTest.vcxproj -> C:\Users\njmey\Desktop\GitHub\AIE_Work\trunk\BootstrapGameTest\temp\BootstrapGameTest\Win32\Debug\BootstrapGameTest.exe
